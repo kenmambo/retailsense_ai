@@ -2,7 +2,7 @@
 
 ## 🚀 Ready-to-Use Commands
 
-Your project is now fully organized and ready for GitHub! Here are the key commands:
+Your project supports both offline demo mode and production BigQuery analytics!
 
 ### 🏃‍♂️ **Run the Project**
 ```bash
@@ -12,12 +12,32 @@ uv run python -m retailsense_ai.main --demo
 # Run BigQuery analysis (requires Google Cloud credentials)
 uv run python -m retailsense_ai.main --bigquery
 
-# Launch Jupyter notebook for interactive analysis
-uv run jupyter notebook
-
 # Run all tests
 uv run pytest tests/ -v
 ```
+
+### 🔧 **Quick Setup**
+
+#### For Demo Mode (No Setup Required)
+```bash
+# Clone and run immediately
+git clone <your-repo-url>
+cd retailsense_ai
+uv install
+uv run python -m retailsense_ai.main --demo
+```
+
+#### For Production Mode (BigQuery)
+1. **Set up Google Cloud credentials** (see [PRODUCTION_SETUP.md](PRODUCTION_SETUP.md))
+2. **Update `.env` file** with your project details:
+   ```env
+   PROJECT_ID=your-project-id
+   GOOGLE_APPLICATION_CREDENTIALS=credentials/retailsense-ai-credentials.json
+   ```
+3. **Run BigQuery analysis**:
+   ```bash
+   uv run python -m retailsense_ai.main --bigquery
+   ```
 
 ### 📁 **Project Structure**
 ```

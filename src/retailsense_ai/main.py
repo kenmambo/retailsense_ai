@@ -13,6 +13,7 @@ project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root / "src"))
 
 from retailsense_ai import RetailSenseAI, RetailSenseAIDemo
+from retailsense_ai.online_demo import RetailSenseAIOnlineDemo
 
 
 def main():
@@ -131,68 +132,36 @@ def run_bigquery_analysis(args):
     print()
     
     try:
-        # Determine credentials path
-        credentials_path = args.credentials
-        if not credentials_path:
-            # Look for credentials in default locations
-            default_paths = [
-                "credentials/retailsense-ai-ceb777b5822d.json",
-                "credentials/service-account.json",
-                os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
-            ]
-            
-            for path in default_paths:
-                if path and os.path.exists(path):
-                    credentials_path = path
-                    break
-        
-        if not credentials_path or not os.path.exists(credentials_path):
-            print("❌ BigQuery credentials not found!")
-            print("💡 Please provide credentials using one of these methods:")
-            print("   1. Use --credentials /path/to/service-account.json")
-            print("   2. Place credentials in credentials/retailsense-ai-ceb777b5822d.json")
-            print("   3. Set GOOGLE_APPLICATION_CREDENTIALS environment variable")
-            return
-        
-        # Initialize RetailSense AI
+        # Initialize RetailSense AI with environment variable support  
         retail_ai = RetailSenseAI(
             project_id=args.project_id,
-            credentials_path=credentials_path
+            credentials_path=args.credentials
         )
         
-        # Run BigQuery analysis pipeline
-        print("🔧 Setting up BigQuery environment...")
-        retail_ai.setup_environment()
+        # Run comprehensive BigQuery ML pipeline
+        print("🚀 Running comprehensive BigQuery ML pipeline...")
+        analytics_data = retail_ai.create_comprehensive_pipeline()
         
-        print("📥 Loading GA4 sample data...")
-        retail_ai.load_ga4_data()
+        if analytics_data is not None:
+            # Get additional analysis results
+            print("📈 Retrieving analysis results...")
+            performance_data = retail_ai.get_performance_data()
+            category_data = retail_ai.get_category_analysis()
+            
+            print("\n✅ BIGQUERY ANALYSIS COMPLETED!")
+            print("=" * 60)
+            print(f"📊 Products analyzed: {len(performance_data):,}")
+            print(f"🏷️  Categories: {len(category_data)}")
+            
+            if not performance_data.empty:
+                total_revenue = performance_data['total_revenue'].sum()
+                avg_conversion = performance_data['view_to_purchase_rate'].mean() * 100
+                print(f"💰 Total revenue: ${total_revenue:,.2f}")
+                print(f"📈 Avg conversion: {avg_conversion:.2f}%")
         
-        print("📊 Creating product performance analysis...")
-        retail_ai.create_product_performance_table()
-        
-        # Get and display results
-        print("📈 Retrieving analysis results...")
-        performance_data = retail_ai.get_performance_data()
-        category_data = retail_ai.get_category_analysis()
-        
-        print("\n✅ BIGQUERY ANALYSIS COMPLETED!")
-        print("=" * 60)
-        print(f"📊 Products analyzed: {len(performance_data):,}")
-        print(f"🏷️  Categories: {len(category_data)}")
-        print(f"💰 Total revenue: ${performance_data['total_revenue'].sum():,.2f}")
-        print(f"📈 Avg conversion: {performance_data['view_to_purchase_rate'].mean()*100:.2f}%")
-        
-        # Save results to output directory
-        performance_path = os.path.join(args.output_dir, "bigquery_performance_data.csv")
-        category_path = os.path.join(args.output_dir, "bigquery_category_analysis.csv")
-        
-        performance_data.to_csv(performance_path, index=False)
-        category_data.to_csv(category_path, index=False)
-        
-        print(f"\n📄 Results saved:")
-        print(f"   - Performance data: {performance_path}")
-        print(f"   - Category analysis: {category_path}")
-        
+        else:
+            print("❌ BigQuery analysis failed to complete")
+            
     except Exception as e:
         print(f"❌ BigQuery analysis error: {e}")
         print("💡 Check credentials, project permissions, and network connectivity")

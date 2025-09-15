@@ -48,7 +48,13 @@ retailsense-ai/
 │   ├── demo.py                     # Offline analytics
 │   └── main.py                     # CLI entry point
 ├── 📁 notebooks/                   # Jupyter notebooks
-│   └── retailsense_ai_complete_demo.ipynb
+│   ├── 01_setup_and_overview.ipynb      # Project introduction and overview
+│   ├── 02_data_generation_and_eda.ipynb # Data generation and analysis
+│   ├── 03_ai_similarity_search.ipynb    # Vector search and recommendations
+│   ├── 04_business_intelligence.ipynb   # Forecasting and insights
+│   ├── 05_bigquery_integration.ipynb    # Production BigQuery integration
+│   ├── 06_final_results.ipynb           # Business impact and results
+│   └── retailsense_ai_complete_demo.ipynb # Legacy demo notebook
 ├── 📁 credentials/                 # Secure credentials (gitignored)
 │   ├── service-account-template.json
 │   └── retailsense-ai-ceb777b5822d.json (your actual credentials)
@@ -106,7 +112,7 @@ Your project is now perfectly organized for GitHub with:
 1. **Push to GitHub**: `git add . && git commit -m "Initial commit" && git push`
 2. **Share Demo**: Run `uv run python -m retailsense_ai.main --demo` for stakeholders
 3. **Cloud Scale**: Use `--bigquery` for production analytics
-4. **Interactive Analysis**: Explore `notebooks/retailsense_ai_complete_demo.ipynb`
+4. **Interactive Analysis**: Explore the notebook series in `notebooks/`
 
 ### 💡 **Key Commands Summary**
 ```bash
@@ -116,8 +122,8 @@ uv run python -m retailsense_ai.main --demo
 # Full analysis with BigQuery
 uv run python -m retailsense_ai.main --bigquery --output-dir my_analysis
 
-# Interactive notebook
-uv run jupyter notebook notebooks/retailsense_ai_complete_demo.ipynb
+# Interactive notebook series
+uv run jupyter notebook notebooks/
 
 # Run tests
 uv run pytest tests/ -v

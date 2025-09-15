@@ -80,11 +80,20 @@
 
 ## 📊 Demo
 
-### 🎮 Interactive Jupyter Notebook
-Explore the complete functionality with our comprehensive notebook:
+### 🎮 Interactive Jupyter Notebooks
+Explore the complete functionality with our comprehensive notebook series:
 
 ```bash
-uv run jupyter notebook notebooks/retailsense_ai_complete_demo.ipynb
+# Run the complete notebook series
+uv run jupyter notebook notebooks/
+
+# Or run specific notebooks:
+uv run jupyter notebook notebooks/01_setup_and_overview.ipynb
+uv run jupyter notebook notebooks/02_data_generation_and_eda.ipynb
+uv run jupyter notebook notebooks/03_ai_similarity_search.ipynb
+uv run jupyter notebook notebooks/04_business_intelligence.ipynb
+uv run jupyter notebook notebooks/05_bigquery_integration.ipynb
+uv run jupyter notebook notebooks/06_final_results.ipynb
 ```
 
 ### 🖥 Command Line Demo
@@ -175,7 +184,13 @@ retailsense-ai/
 │   ├── core.py                     # BigQuery integration & core logic
 │   └── demo.py                     # Offline demo functionality
 ├── 📁 notebooks/                   # Jupyter notebooks
-│   └── retailsense_ai_complete_demo.ipynb
+│   ├── 01_setup_and_overview.ipynb      # Project introduction and overview
+│   ├── 02_data_generation_and_eda.ipynb # Data generation and analysis
+│   ├── 03_ai_similarity_search.ipynb    # Vector search and recommendations
+│   ├── 04_business_intelligence.ipynb   # Forecasting and insights
+│   ├── 05_bigquery_integration.ipynb    # Production BigQuery integration
+│   ├── 06_final_results.ipynb           # Business impact and results
+│   └── retailsense_ai_complete_demo.ipynb # Legacy demo notebook
 ├── 📁 credentials/                 # Secure credential storage
 │   └── service-account-template.json
 ├── 📁 outputs/                     # Generated reports and visualizations

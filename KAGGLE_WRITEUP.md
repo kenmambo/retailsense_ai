@@ -209,6 +209,14 @@ Complete walkthrough demonstrating:
 - Vector similarity search demonstrations
 - Revenue forecasting with confidence intervals
 
+**Notebook Series:**
+1. `01_setup_and_overview.ipynb` - Project introduction and capabilities
+2. `02_data_generation_and_eda.ipynb` - Data generation and analysis
+3. `03_ai_similarity_search.ipynb` - Vector search and recommendations
+4. `04_business_intelligence.ipynb` - Forecasting and insights
+5. `05_bigquery_integration.ipynb` - Production BigQuery integration
+6. `06_final_results.ipynb` - Business impact and results
+
 ### **☁️ Cloud-Scale Production Implementation**
 ```bash
 # Production deployment commands
@@ -276,6 +284,13 @@ retailsense-ai/
 │   ├── demo.py              # Offline demonstration
 │   └── main.py              # CLI interface
 ├── 📁 notebooks/            # Interactive demos
+│   ├── 01_setup_and_overview.ipynb      # Project introduction and overview
+│   ├── 02_data_generation_and_eda.ipynb # Data generation and analysis
+│   ├── 03_ai_similarity_search.ipynb    # Vector search and recommendations
+│   ├── 04_business_intelligence.ipynb   # Forecasting and insights
+│   ├── 05_bigquery_integration.ipynb    # Production BigQuery integration
+│   ├── 06_final_results.ipynb           # Business impact and results
+│   └── retailsense_ai_complete_demo.ipynb # Legacy demo notebook
 └── 📁 outputs/              # Generated insights
 ```
 

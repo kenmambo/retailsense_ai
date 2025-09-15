@@ -430,6 +430,13 @@ retailsense-ai/
 ├── 📁 sql/                    # BigQuery AI SQL scripts
 ├── 📁 src/retailsense_ai/    # Python implementation  
 ├── 📁 notebooks/            # Interactive demos
+│   ├── 01_setup_and_overview.ipynb      # Project introduction and overview
+│   ├── 02_data_generation_and_eda.ipynb # Data generation and analysis
+│   ├── 03_ai_similarity_search.ipynb    # Vector search and recommendations
+│   ├── 04_business_intelligence.ipynb   # Forecasting and insights
+│   ├── 05_bigquery_integration.ipynb    # Production BigQuery integration
+│   ├── 06_final_results.ipynb           # Business impact and results
+│   └── retailsense_ai_complete_demo.ipynb # Legacy demo notebook
 ├── 📁 tests/                # Comprehensive test suite
 └── 📁 docs/                 # Complete documentation
 ```
@@ -489,7 +496,7 @@ uv run python -m retailsense_ai.main --demo
 
 **📚 Learn More:**
 - [Complete Documentation](https://github.com/yourusername/retailsense-ai/blob/main/README.md)
-- [Interactive Jupyter Notebook](https://github.com/yourusername/retailsense-ai/blob/main/notebooks/retailsense_ai_complete_demo.ipynb)
+- [Interactive Jupyter Notebooks](https://github.com/yourusername/retailsense-ai/blob/main/notebooks/)
 - [BigQuery AI Integration Guide](https://github.com/yourusername/retailsense-ai/blob/main/BIGQUERY_USAGE.md)
 
 ---
